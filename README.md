@@ -7,8 +7,8 @@ A robust **Selenium + Appium Test Automation Framework** for Web and Mobile appl
 ## ✅ Features
 - 🌐 **Web Automation** (Local & Cloud)
 - 📱 **Mobile Automation (Android/iOS)** (Local & Cloud) using Appium
-- ⚡ **Parallel execution** using TestNG
-- 🧪 **Cucumber BDD with TestNG runners**
+- ⚡ **Parallel execution**
+- 🧪 **Cucumber BDD**
 - ☁️ **Cloud Execution** support (BrowserStack)
 - ✅ **Integrations:**
   - **Jenkins** (CI/CD)
