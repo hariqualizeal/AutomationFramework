@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Test-Suite" parallel="tests" thread-count="10">
+    <test name="BrowserStack Windows Chrome">
+        <parameter name="Cloud" value="true"/>
+        <parameter name="browser" value="Chrome"/>
+        <parameter name="platform" value="Windows"/>
+        <parameter name="platformVersion" value="11"/>
+        <!--user credentials should be provided through testng xml files for parallel run-->
+        <!--since same user cant login in to multiple devices same time-->
+        <parameter name="username" value="abc@gmail.com"/>
+        <parameter name="password" value="password@123"/>
+        <parameter name="WebOrMobile" value="WebCloud"/>
+        <classes>
+            <class name="cucumber.testRunners.TestNGParallelRunner1Web"/>
+        </classes>
+    </test>
+    <test name="BrowserStack Windows Chrome2">
+        <parameter name="Cloud" value="true"/>
+        <parameter name="browser" value="Chrome"/>
+        <parameter name="platform" value="Windows"/>
+        <parameter name="platformVersion" value="11"/>
+        <!--user credentials should be provided through testng xml files for parallel run-->
+        <!--since same user cant login in to multiple devices same time-->
+        <parameter name="username" value="abc@gmail.com"/>
+        <parameter name="password" value="password@123"/>
+        <parameter name="WebOrMobile" value="WebCloud"/>
+        <classes>
+            <class name="cucumber.testRunners.TestNGParallelRunner2Web"/>
+        </classes>
+    </test>
+    <test name="BrowserStack iPhone 13">
+        <parameter name="Cloud" value="true"/>
+        <parameter name="deviceName" value="iPhone 13"/>
+        <parameter name="platform" value="ios"/>
+        <parameter name="platformVersion" value="15"/>
+        <!--user credentials should be provided through testng xml files for parallel run-->
+        <!--since same user cant login in to multiple devices same time-->
+        <parameter name="username" value="abc@gmail.com"/>
+        <parameter name="password" value="password@123"/>
+        <parameter name="WebOrMobile" value="Mobile"/>
+        <classes>
+            <class name="cucumber.testRunners.TestNGParallelRunner1Mobile"/>
+        </classes>
+    </test>
+    <test name="BrowserStack Google Pixel 6 device 2">
+        <parameter name="Cloud" value="true"/>
+        <parameter name="deviceName" value="Google Pixel 6"/>
+        <parameter name="platform" value="android"/>
+        <parameter name="platformVersion" value="12.0"/>
+        <!--user credentials should be provided through testng xml files for parallel run-->
+        <!--since same user cant login in to multiple devices same time-->
+        <parameter name="username" value="abc@gmail.com"/>
+        <parameter name="password" value="password@123"/>
+        <parameter name="WebOrMobile" value="Mobile"/>
+        <classes>
+            <class name="cucumber.testRunners.TestNGParallelRunner2Mobile"/>
+        </classes>
+    </test>
+</suite>

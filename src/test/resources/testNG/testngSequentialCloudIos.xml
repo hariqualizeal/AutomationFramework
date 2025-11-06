@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Test-Suite">
+    <test name="BrowserStack iPhone 13 Pro">
+        <parameter name="Cloud" value="true"/>
+        <parameter name="deviceName" value="iPhone 13 Pro"/>
+        <parameter name="platform" value="ios"/>
+        <parameter name="platformVersion" value="15"/>
+        <parameter name="username" value="abc@gmail.com"/>
+        <parameter name="password" value="password@123"/>
+        <parameter name="WebOrMobile" value="Mobile"/>
+        <classes>
+            <class name="cucumber.testRunners.TestNGSequentialRunnerMobile"/>
+        </classes>
+    </test>
+</suite>

@@ -1,0 +1,30 @@
+pipeline {
+    agent {
+        node {
+            label 'qa'
+        }
+    }
+    stages {
+        stage('clone') {
+            steps {
+                git branch: 'master', credentialsId: 'credential id from jenkins', url: 'git@github.com:harigithub1/SeleniumAutomationFramework.git'
+            }
+        }
+        stage('test') {
+            steps {
+                bat '''mvn clean test -PMobile -Dtag1=login'''
+            }
+            post {
+                always {
+                    archive includes: 'target/extent-reports/*.html'
+                }
+                success {
+                    mail bcc: '', body: "<b>Test Passed</b><br>Project: ${env.JOB_NAME} <br>Jenkins Build Number: ${env.BUILD_NUMBER} <br> Jenkins Build URL: ${env.BUILD_URL} <br> Test Report is available in Jenkins Build Artifacts section", cc: '', charset: 'UTF-8', from:'', mimeType: 'text/html', replyTo: '', subject: "Test Passed: Job Name -> ${env.JOB_NAME}", to: "email id 1, email id 2, email id 3";
+                }
+                failure {
+                    mail bcc: '', body: "<b>Test Failed</b><br>Project: ${env.JOB_NAME} <br>Jenkins Build Number: ${env.BUILD_NUMBER} <br> Jenkins Build URL: ${env.BUILD_URL} <br> Test Report is available in Jenkins Build Artifacts section", cc: '', charset: 'UTF-8', from:'', mimeType: 'text/html', replyTo: '', subject: "Test Failed: Job Name -> ${env.JOB_NAME}", to: "email id 1, email id 2, email id 3";
+                }
+            }
+        }
+    }
+}

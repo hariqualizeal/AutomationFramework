@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Test-Suite" parallel="tests" thread-count="5">
+    <test name="Pixel 6">
+        <parameter name="Cloud" value="false"/>
+        <parameter name="deviceName" value="emulator-5554"/>
+        <parameter name="platform" value="android"/>
+        <parameter name="platformVersion" value="12.0"/>
+        <!--user credentials should be provided through testng xml files for parallel run-->
+        <!--since same user cant login in to multiple devices same time-->
+        <parameter name="username" value="abc@gmail.com"/>
+        <parameter name="password" value="password@123"/>
+        <parameter name="WebOrMobile" value="Mobile"/>
+        <classes>
+            <class name="cucumber.testRunners.TestNGParallelRunner1Mobile"/>
+        </classes>
+    </test>
+    <test name="Pixel 7">
+        <parameter name="Cloud" value="false"/>
+        <parameter name="deviceName" value="emulator-5556"/>
+        <parameter name="platform" value="android"/>
+        <parameter name="platformVersion" value="13.0"/>
+        <!--user credentials should be provided through testng xml files for parallel run-->
+        <!--since same user cant login in to multiple devices same time-->
+        <parameter name="username" value="abc@gmail.com"/>
+        <parameter name="password" value="password@123"/>
+        <parameter name="WebOrMobile" value="Mobile"/>
+        <classes>
+            <class name="cucumber.testRunners.TestNGParallelRunner2Mobile"/>
+        </classes>
+    </test>
+</suite>

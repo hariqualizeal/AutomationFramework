@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Test-Suite" parallel="tests" thread-count="5">
+    <test name="Local Browser1">
+        <parameter name="Cloud" value="false"/>
+        <parameter name="browser" value="Chrome"/>
+        <parameter name="platform" value="Windows"/>
+        <parameter name="platformVersion" value="11"/>
+        <!--user credentials should be provided through testng xml files for parallel run-->
+        <!--since same user cant login in to multiple devices same time-->
+        <parameter name="username" value="abc@gmail.com"/>
+        <parameter name="password" value="password@123"/>
+        <parameter name="WebOrMobile" value="WebLocal"/>
+        <classes>
+            <class name="cucumber.testRunners.TestNGParallelRunner1Web"/>
+        </classes>
+    </test>
+    <test name="Local Browser2">
+        <parameter name="Cloud" value="false"/>
+        <parameter name="browser" value="Chrome"/>
+        <parameter name="platform" value="Windows"/>
+        <parameter name="platformVersion" value="11"/>
+        <!--user credentials should be provided through testng xml files for parallel run-->
+        <!--since same user cant login in to multiple devices same time-->
+        <parameter name="username" value="abc@gmail.com"/>
+        <parameter name="password" value="password@123"/>
+        <parameter name="WebOrMobile" value="WebLocal"/>
+        <classes>
+            <class name="cucumber.testRunners.TestNGParallelRunner2Web"/>
+        </classes>
+    </test>
+</suite>
