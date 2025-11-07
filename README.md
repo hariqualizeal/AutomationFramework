@@ -30,7 +30,8 @@ src
     │   └── utilities
     └── resources
         └── features
-        └── testngxml
+        └── testng
+        └── utilities.mcp
 pom.xml
 README.md
 ```
@@ -78,6 +79,17 @@ appium --address 127.0.0.1 --port 4723
 mvn clean test -PSequentialCloudWeb
 ```
 
+---
+
+## ▶ Generate files using MCP
+
+### ✅ Update prompt
+- Update prompt in `src/test/resources/utilities/mcp/*.prompt.md`
+
+### ✅ Run maven command
+`mvn generate-test-sources`
+`mvn generate-test-sources -Dmcp.pageClass=<PageClassName> -Dmcp.stepsClass=<StepsClassName> -Dmcp.featureName=<FeatureFileName> -Dmcp.packagePages=<PackageForPages> -Dmcp.packageSteps=<PackageForStepDefinitions>`
+- now generated files will be available in src/test/resources/features, src/test/java/cucumber/stepdefinitions and src/test/java/pages.
 ---
 
 ## ⚙ Maven Commands
