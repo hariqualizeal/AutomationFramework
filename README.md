@@ -1,13 +1,13 @@
 # MCP integrated Automation Testing Framework
 
-A robust **Selenium + Appium + MCP integrated Test Automation Framework** for Web and Mobile applications, supporting execution on **Local Devices, Cloud (BrowserStack)**, and integration with **Jenkins, Jira, and Zephyr**.
+A robust **Selenium + Appium + MCP(Model Context Protocol) integrated Test Automation Framework** for Web and Mobile applications, supporting execution on **Local Devices, Cloud (BrowserStack)**, and integration with **Jenkins, Jira, and Zephyr**.
 
 ---
 
 ## ✅ Features
 - 🌐 **Web Automation** (Local & Cloud)
 - 📱 **Mobile Automation (Android/iOS)** (Local & Cloud) using Appium
-- ** Integrated with MCP(Model Context Protocol) server for Page classes, Step Definitions and Feature files creation
+- ✅ **Integrated with MCP(Model Context Protocol)** for Page classes, Step Definitions and Feature files creation
 - ⚡ **Parallel execution**
 - 🧪 **Cucumber BDD**
 - ☁️ **Cloud Execution** support (BrowserStack)
