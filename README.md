@@ -1,4 +1,4 @@
-# MCP based Automation Testing Framework
+# MCP integrated Automation Testing Framework
 
 A robust **Selenium + Appium + MCP integrated Test Automation Framework** for Web and Mobile applications, supporting execution on **Local Devices, Cloud (BrowserStack)**, and integration with **Jenkins, Jira, and Zephyr**.
 
