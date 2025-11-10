@@ -1,6 +1,6 @@
-# MCP integrated Automation Testing Framework
+# Automation Testing Framework
 
-A robust **Selenium + Appium + MCP(Model Context Protocol) integrated Test Automation Framework** for Web and Mobile applications, supporting execution on **Local Devices, Cloud (BrowserStack)**, and integration with **Jenkins, Jira, and Zephyr**.
+A robust **Selenium + Appium integrated Test Automation Framework** for Web and Mobile applications, supporting execution on **Local Devices, Cloud (BrowserStack)**, and integration with **Jenkins, Jira, and Zephyr**.
 
 ---
 
@@ -62,6 +62,11 @@ appium --address 127.0.0.1 --port 4723
 |---------|------------------------------------------------------|
 | `mvn clean test -PSequentialLocalWeb` | Run web tests locally on browser                     |
 | `mvn clean test -PSequentialLocalAndroid` | Run mobile tests locally on connected Android device |
+
+### ✅ To generate MCP files(Feature, Page class, Step Definitions)
+| Command | Description                                             |
+|---------|---------------------------------------------------------|
+| `mvn generate-test-sources` | Update prompt in mcp folder (resources->utilities->mcp) |
 
 ### ✅ Update Cucumber Test Runner
 - Modify tags in `src/test/java/cucumber/testRunners/*Runner.java`
