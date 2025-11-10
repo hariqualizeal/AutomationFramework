@@ -7,7 +7,8 @@ Feature: Read states from Excel
     Given I read the "Users" sheet column "State Name" from "testdata.xlsx"
     Then I should have 10 products
 
-  @excel
+  @rimsys
   Scenario: Load 'State Name' list
+    # passing sheet name, filed name and file name
     Given I read the "Sheet1" sheet column "First Name" from "sample_test_data_3_columns.xlsx"
     Then I should have 10000 products

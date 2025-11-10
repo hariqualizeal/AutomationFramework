@@ -21,7 +21,7 @@ import java.net.URL;
  */
 @CucumberOptions(
         monochrome = true,
-        tags = "@excel",
+        tags = "@MyntraScenario",
         features = "src/test/resources/features",
         glue = "cucumber.stepdefinitions",
         publish = false,
@@ -42,10 +42,9 @@ public class TestNGSequentialRunnerWeb {
   @BeforeMethod
   @Parameters({"platform", "platformVersion", "browser"})
   public void setup(String platform, String platformVersion, String browser) throws IOException {
-    ConfigReader configReader = new ConfigReader();
-    String browserStackUsername = configReader.config().getProperty("BrowserStackUsername");
-    String browserStackAccessKey = configReader.config().getProperty("BrowserStackAccessKey");
-    String browserStackServer = configReader.config().getProperty("BrowserStackServer");
+    String browserStackUsername = ConfigReader.get("BrowserStackUsername");
+    String browserStackAccessKey = ConfigReader.get("BrowserStackAccessKey");
+    String browserStackServer = ConfigReader.get("BrowserStackServer");
     DesiredCapabilities caps = desiredCapabilitiesUtil.getDesiredCapabilitiesWebCloud(platform, platformVersion, browser);
     if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("Cloud").equalsIgnoreCase("true")) {
       ThreadLocalDriver.setRemoteWebDriverThreadLocal(new RemoteWebDriver(new URL("http://" + browserStackUsername + ":" + browserStackAccessKey + "@" + browserStackServer + "/wd/hub"), caps));

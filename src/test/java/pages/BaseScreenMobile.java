@@ -14,11 +14,10 @@ import java.util.List;
 public class BaseScreenMobile {
     protected AppiumDriver driver;
     protected WebDriverWait wait;
-    ConfigReader configReader = new ConfigReader();
 
     public BaseScreenMobile(AppiumDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(Long.parseLong(configReader.config().getProperty("waitTime"))));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(Long.parseLong(ConfigReader.get("waitTime"))));
     }
 
     protected boolean isAndroid() {

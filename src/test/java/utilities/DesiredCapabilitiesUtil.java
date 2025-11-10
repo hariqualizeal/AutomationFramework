@@ -10,9 +10,8 @@ public class DesiredCapabilitiesUtil {
             .getTestContext().getCurrentXmlTest()
             .getParameter("Cloud").equalsIgnoreCase("true");
 
-    ConfigReader configReader = new ConfigReader();
-    String browserStackAppURLAndroid = configReader.config().getProperty("BrowserStackAppURLAndroid");
-    String browserStackAppURLIos = configReader.config().getProperty("BrowserStackAppURLIos");
+    String browserStackAppURLAndroid = ConfigReader.get("BrowserStackAppURLAndroid");
+    String browserStackAppURLIos = ConfigReader.get("BrowserStackAppURLIos");
     DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 
     if (isCloud) {
