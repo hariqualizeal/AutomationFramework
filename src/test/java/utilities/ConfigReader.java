@@ -38,8 +38,4 @@ public final class ConfigReader {
   public static String get(String key) {
     return getConfig().getProperty(key);
   }
-
-  public static String getOrDefault(String key, String defaultValue) {
-    return getConfig().getProperty(key, defaultValue);
-  }
 }
