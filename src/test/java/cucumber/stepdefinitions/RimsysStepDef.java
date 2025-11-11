@@ -1,8 +1,10 @@
 package cucumber.stepdefinitions;
 
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import org.testng.Reporter;
+import utilities.ConfigReader;
 import utilities.ExcelUtil;
 import utilities.ThreadLocalDriver;
 
@@ -10,16 +12,32 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class ExcelSteps {
+public class RimsysStepDef extends BaseSteps{
 
+    boolean mobile = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("Mobile");
+    boolean webCloud = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("WebCloud");
     private List<String> states;
+
+    @Before
+    public void setupLoginSteps() {
+        if (mobile) {
+            //mobile code - for both cloud/local
+            setupScreensMobile(ThreadLocalDriver.getAppiumDriverThreadLocal());
+        } else if (webCloud) {
+            //web code - for cloud
+            setupScreensWebCloud(ThreadLocalDriver.getRemoteWebDriverThreadLocal());
+        } else {
+            //web code - for local
+            setupScreensWebLocal(ThreadLocalDriver.getWebDriverThreadLocal());
+        }
+    }
 
     @Given("I read the {string} sheet column {string} from {string}")
     public void i_read_the_sheet_column_from(String sheetName, String columnHeader, String fileName) throws Exception {
         Path excelPath = Paths.get(System.getProperty("user.dir"),"\\src\\test\\resources\\excelfiles\\"+ fileName);
         ExcelUtil excel = new ExcelUtil(excelPath);
         states = excel.getColumn(sheetName, columnHeader);
-        ThreadLocalDriver.getWebDriverThreadLocal().get("https://rimcentral5.rimsys.io/");
+        rimsysPage.userOnHomePage();
     }
 
     @Then("I should have {int} products")

@@ -42,10 +42,9 @@ public class TestNGParallelRunner2Mobile {
   @BeforeMethod
   @Parameters({"deviceName", "platformVersion"})
   public void setup(String deviceName, String platformVersion) throws IOException {
-    ConfigReader configReader = new ConfigReader();
-    String browserStackUsername = configReader.config().getProperty("BrowserStackUsername");
-    String browserStackAccessKey = configReader.config().getProperty("BrowserStackAccessKey");
-    String browserStackServer = configReader.config().getProperty("BrowserStackServer");
+    String browserStackUsername = ConfigReader.get("BrowserStackUsername");
+    String browserStackAccessKey = ConfigReader.get("BrowserStackAccessKey");
+    String browserStackServer = ConfigReader.get("BrowserStackServer");
     DesiredCapabilities caps = desiredCapabilitiesUtil.getDesiredCapabilitiesMobile(deviceName, platformVersion);
     if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("Cloud").equalsIgnoreCase("true")) {
       if (Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("platform").equalsIgnoreCase("android"))

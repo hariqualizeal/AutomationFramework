@@ -1,25 +1,41 @@
 package utilities;
 
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
-public class ConfigReader {
-  public Properties prop;
+public final class ConfigReader {
 
-  /**
-   * This method is used to load the properties from config.properties file
-   *
-   * @return it returns Properties prop object
-   */
-  public Properties config() {
-    prop = new Properties();
-    try {
-      FileInputStream ip = new FileInputStream("./src/test/resources/config.properties");
-      prop.load(ip);
-    } catch (IOException e) {
-      e.printStackTrace();
+  // volatile ensures visibility across threads
+  private static volatile Properties prop;
+
+  // Private constructor prevents instantiation
+  private ConfigReader() {}
+
+  public static Properties getConfig() {
+    if (prop == null) {  // First check (no locking)
+      synchronized (ConfigReader.class) {
+        if (prop == null) {  // Second check (with lock)
+          loadConfig();
+        }
+      }
     }
     return prop;
+  }
+
+  private static void loadConfig() {
+    prop = new Properties();
+    try (InputStream input = ConfigReader.class.getClassLoader().getResourceAsStream("config.properties")) {
+      if (input == null) {
+        throw new IOException("config.properties not found in classpath");
+      }
+      prop.load(input);
+    } catch (IOException e) {
+      throw new RuntimeException("Failed to load configuration file", e);
+    }
+  }
+
+  public static String get(String key) {
+    return getConfig().getProperty(key);
   }
 }

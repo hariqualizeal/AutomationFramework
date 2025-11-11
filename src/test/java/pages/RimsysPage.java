@@ -1,19 +1,16 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.Reporter;
+import org.openqa.selenium.WebDriver;
 import utilities.ConfigReader;
 import utilities.ThreadLocalDriver;
 
-public class WebCloudMyntraHomePage extends BaseScreenWeb {
-    public WebCloudMyntraHomePage(RemoteWebDriver driver) {
-        super(driver);
-    }
+public class RimsysPage extends BaseScreenWeb {
+    public RimsysPage(WebDriver driver) {super(driver);}
 
-  /**
-   * Web Elements
-   */
+    /**
+     * Web Elements
+     */
     By womenCategoryButton = By.xpath("//*[text()='Women']");
     By kidsCategoryButton = By.xpath("//*[text()='Kids']");
 
@@ -22,8 +19,8 @@ public class WebCloudMyntraHomePage extends BaseScreenWeb {
      */
     public void userOnHomePage() {
         String onlineUrl = ConfigReader.get("OnlineUrl");
-        ThreadLocalDriver.getRemoteWebDriverThreadLocal().get(onlineUrl);
-//      test.get().log(Status.INFO, "Home Page", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64WebCloud()).build());
+        ThreadLocalDriver.getWebDriverThreadLocal().get(onlineUrl);
+//      test.get().log(Status.INFO, "Home Page", MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshotAsBase64WebLocal()).build());
     }
 
     public void clickStudio() {
