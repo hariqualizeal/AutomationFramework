@@ -5,8 +5,8 @@ import org.openqa.selenium.WebDriver;
 import utilities.ConfigReader;
 import utilities.ThreadLocalDriver;
 
-public class RimsysPage extends BaseScreenWeb {
-    public RimsysPage(WebDriver driver) {super(driver);}
+public class ExcelReadPage extends BaseScreenWeb {
+    public ExcelReadPage(WebDriver driver) {super(driver);}
 
     /**
      * Web Elements

@@ -12,7 +12,7 @@ public class BaseSteps {
     protected WebCloudMyntraHomePage webCloudMyntraHomePage;
     protected WebLocalMyntraHomePage webLocalMyntraHomePage;
     protected MobileWikiHomePage mobileWikiHomePage;
-    protected RimsysPage rimsysPage;
+    protected ExcelReadPage excelReadPage;
 
     public void setupScreensMobile(AppiumDriver driver) {
         mobileWikiHomePage = new MobileWikiHomePage(driver);
@@ -24,6 +24,6 @@ public class BaseSteps {
 
     public void setupScreensWebLocal(WebDriver driver) {
         webLocalMyntraHomePage = new WebLocalMyntraHomePage(driver);
-        rimsysPage = new RimsysPage(driver);
+        excelReadPage = new ExcelReadPage(driver);
     }
 }

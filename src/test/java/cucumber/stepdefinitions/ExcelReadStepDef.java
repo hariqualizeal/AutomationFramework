@@ -4,7 +4,6 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.testng.Reporter;
-import utilities.ConfigReader;
 import utilities.ExcelUtil;
 import utilities.ThreadLocalDriver;
 
@@ -12,7 +11,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class RimsysStepDef extends BaseSteps{
+public class ExcelReadStepDef extends BaseSteps{
 
     boolean mobile = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("Mobile");
     boolean webCloud = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("WebOrMobile").equalsIgnoreCase("WebCloud");
@@ -37,7 +36,7 @@ public class RimsysStepDef extends BaseSteps{
         Path excelPath = Paths.get(System.getProperty("user.dir"),"\\src\\test\\resources\\excelfiles\\"+ fileName);
         ExcelUtil excel = new ExcelUtil(excelPath);
         states = excel.getColumn(sheetName, columnHeader);
-        rimsysPage.userOnHomePage();
+        excelReadPage.userOnHomePage();
     }
 
     @Then("I should have {int} products")
